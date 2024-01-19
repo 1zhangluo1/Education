@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/admin_teach"
+        android:orderInCategory="0"
+        android:title="功能选择"
+        android:icon="@drawable/ic_teach_admin"/>
+
+    <item
+        android:id="@+id/analyze"
+        android:orderInCategory="1"
+        android:title="教学分析"
+        android:icon="@drawable/ic_analyze"/>
+
+    <item
+        android:id="@+id/user"
+        android:orderInCategory="2"
+        android:title="个人主页"
+        android:icon="@drawable/ic_user"/>
+
+</menu>
