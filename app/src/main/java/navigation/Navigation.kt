@@ -2,8 +2,10 @@ package navigation
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.Window
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -12,6 +14,8 @@ import com.zhangluo.education.R
 
 
 class Navigation : AppCompatActivity() {
+
+    private var mExitTime : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +59,17 @@ class Navigation : AppCompatActivity() {
         if (wic != null) {
             wic.isAppearanceLightStatusBars = true
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                mExitTime = System.currentTimeMillis()
+                Toast.makeText(this,"再按一次退出程序", Toast.LENGTH_SHORT).show()
+            } else finish()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
 }

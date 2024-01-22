@@ -6,14 +6,17 @@ import android.content.SharedPreferences.Editor
 import android.graphics.Color
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.view.KeyEvent
 import android.view.View
 import android.view.Window
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import com.zhangluo.education.databinding.ActivityLoginBinding
 import navigation.Navigation
+
 
 class Login : AppCompatActivity() {
 
@@ -23,6 +26,7 @@ class Login : AppCompatActivity() {
     private lateinit var pref: SharedPreferences
     private lateinit var editor: Editor
     private var isHide = true
+    var mExitTime:Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,11 +55,12 @@ class Login : AppCompatActivity() {
                 editor.putString("password", passWord);
                 editor.putBoolean("is", true);
             } else {
-                editor.clear();
+                editor.clear()
             }
-            editor.apply();
+            editor.apply()
             val intent = Intent(this, Navigation::class.java)
             startActivity(intent)
+            finish()
         }
 
 
@@ -74,6 +79,17 @@ class Login : AppCompatActivity() {
         if (wic != null) {
             wic.isAppearanceLightStatusBars = true
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                mExitTime = System.currentTimeMillis()
+                Toast.makeText(this,"再按一次退出程序",Toast.LENGTH_SHORT).show()
+            } else finish()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
 }
