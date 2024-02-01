@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="18dp"
-                android:text="王老师"
+                android:text="张付兰"
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 

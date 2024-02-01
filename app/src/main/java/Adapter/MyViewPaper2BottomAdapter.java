@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import MainThreeFragment.Analyze;
-import MainThreeFragment.EnterFunction;
+import MainThreeFragment.MessageAndNotice;
+import MainThreeFragment.Class;
 import MainThreeFragment.User;
 
 public class MyViewPaper2BottomAdapter extends FragmentStateAdapter {
@@ -20,9 +20,9 @@ public class MyViewPaper2BottomAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new EnterFunction();
+                return new Class();
             case 1:
-                return new Analyze();
+                return new MessageAndNotice();
             default:
                 return new User();
         }

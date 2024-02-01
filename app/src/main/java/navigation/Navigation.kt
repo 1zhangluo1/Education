@@ -31,8 +31,8 @@ class Navigation : AppCompatActivity() {
         viewPager2!!.adapter = myViewPaper2BottomAdapter
         bottomNavigationView!!.setOnItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
-                R.id.admin_teach -> viewPager2.setCurrentItem(0)
-                R.id.analyze -> viewPager2.setCurrentItem(1)
+                R.id.my_own_class -> viewPager2.setCurrentItem(0)
+                R.id.message_and_notice -> viewPager2.setCurrentItem(1)
                 R.id.user -> viewPager2.setCurrentItem(2)
             }
             true
@@ -42,9 +42,9 @@ class Navigation : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (position == 0) {
-                    bottomNavigationView!!.selectedItemId = R.id.admin_teach
+                    bottomNavigationView!!.selectedItemId = R.id.my_own_class
                 } else if (position == 1) {
-                    bottomNavigationView!!.selectedItemId = R.id.analyze
+                    bottomNavigationView!!.selectedItemId = R.id.message_and_notice
                 } else if (position == 2) {
                     bottomNavigationView!!.selectedItemId = R.id.user
                 }
@@ -54,7 +54,7 @@ class Navigation : AppCompatActivity() {
 
     private fun adjustStatus() {
         val window: Window = this.window
-        window.statusBarColor = Color.parseColor("#FFFFFF")
+        window.statusBarColor = Color.parseColor("#FAF8F8")
         val wic = ViewCompat.getWindowInsetsController(getWindow().decorView)
         if (wic != null) {
             wic.isAppearanceLightStatusBars = true

@@ -1,42 +1,68 @@
 package MainThreeFragment
 
-import Adapter.ClassAdapter
+import Classes.MyClasses
+import Classes.TeachClasses
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.zhangluo.education.R
-import data.Classes
+import com.zhangluo.education.databinding.FragmentClassBinding
 
 
-class MyClass : Fragment() {
+class Class : Fragment() {
 
-    private val funList = ArrayList<Classes>()
+    private var _binding: FragmentClassBinding? = null
+    private val binding get() = _binding!!
+    private var isListen = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_select, container, false)
-        initFun()
-        val layoutManager = LinearLayoutManager(activity)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.fun_list)
-        recyclerView.layoutManager = layoutManager
-        val adapter = ClassAdapter(funList)
-        recyclerView.adapter = adapter
-        return view
+        _binding = FragmentClassBinding.inflate(
+            inflater, container,
+            false
+        )
+        changeView()
+        binding.myListenClass.setOnClickListener {
+            isListen = true
+            changeView()
+        }
+        binding.myTeachClass.setOnClickListener {
+            isListen = false
+            changeView()
+        }
+        return binding.root
     }
 
+    private fun changeView() {
+        if (isListen) {
+            inflateListenView()
+            binding.myListenClass.setTextAppearance(R.style.CircleTextStyle)
+            binding.myTeachClass.setTextAppearance(R.style.CommonTextStyle)
+        } else {
+            inflateTeachView()
+            binding.myTeachClass.setTextAppearance(R.style.CircleTextStyle)
+            binding.myListenClass.setTextAppearance(R.style.CommonTextStyle)
+        }
+    }
 
+    private fun inflateListenView() {
+        val fragment = MyClasses()
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.class_layout, fragment)
+        fragmentTransaction.commit()
+    }
 
-    private fun initFun() {
-        funList.add(Classes("高数A1","AAA",1))
-        funList.add(Classes("大学物理B","BBB",2))
-        funList.add(Classes("计算机组成原理","CCC",3))
-        funList.add(Classes("程序设计与问题求解","DDD",4))
+    private fun inflateTeachView() {
+        val fragment = TeachClasses()
+        val fragmentManager = parentFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.class_layout, fragment)
+        fragmentTransaction.commit()
     }
 
 }

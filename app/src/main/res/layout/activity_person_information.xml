@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -45,7 +43,7 @@
                 android:layout_below="@+id/header"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="王老师"
+                android:text="张付兰"
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -62,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/header"
                     android:layout_centerHorizontal="true"
-                    android:text="男"
+                    android:text="女"
                     android:textColor="@color/white"
                     android:textSize="14sp" />
 

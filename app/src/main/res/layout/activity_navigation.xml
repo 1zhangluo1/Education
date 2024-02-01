@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#E9E9ED"
+        android:background="@color/white"
         android:theme="@style/footButton"
         app:menu="@menu/bottom_menu" />
 

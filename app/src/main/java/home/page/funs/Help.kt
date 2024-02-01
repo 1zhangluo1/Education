@@ -1,7 +1,7 @@
 package home.page.funs
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.zhangluo.education.R
 
 class Help : AppCompatActivity() {

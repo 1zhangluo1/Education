@@ -1,4 +1,4 @@
 package data
 
-class members {
+data class Members(val name : String, val headerId : Int) {
 }

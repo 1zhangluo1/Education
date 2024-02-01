@@ -1,4 +1,4 @@
-package com.example.needtodo
+package data
 import com.google.gson.annotations.SerializedName
 
 

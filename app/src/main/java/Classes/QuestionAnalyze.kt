@@ -1,4 +1,4 @@
-package Analyzes
+package Classes
 
 import android.os.Bundle
 import android.util.Log
@@ -25,7 +25,7 @@ import okio.IOException
 import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.json.JSONException
 
-class ErrorAnalyze : AppCompatActivity() {
+class QuestionAnalyze : AppCompatActivity() {
 
     val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
     val context = this

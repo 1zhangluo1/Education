@@ -1,4 +1,4 @@
 package data
 
-class AnalyzeOption {
+class AnalyzeOption(val function:String,val enter:Int) {
 }

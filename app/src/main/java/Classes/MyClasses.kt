@@ -1,60 +1,64 @@
 package Classes
 
+import Adapter.ClassAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.zhangluo.education.R
+import com.zhangluo.education.databinding.FragmentMyClassesBinding
+import data.Classes
+import kotlin.concurrent.thread
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MyClasses.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyClasses : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentMyClassesBinding? = null
+    private val binding get() = _binding!!
+    private val funList = ArrayList<Classes>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_classes, container, false)
+    ): View {
+        val view = inflater.inflate(R.layout.fragment_my_classes, container, false)
+        _binding = FragmentMyClassesBinding.inflate(
+            inflater, container,
+            false
+        )
+        initFun()
+        initRecycler()
+        binding.swipeRefresh.setColorSchemeResources(R.color.black)
+        binding.swipeRefresh.setOnRefreshListener {
+            refreshThings()
+        }
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyClasses.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyClasses().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun initRecycler() {
+        val layoutManager = LinearLayoutManager(activity)
+        binding.myClasses.layoutManager = layoutManager
+        val adapter = ClassAdapter(funList)
+        binding.myClasses.adapter = adapter
+    }
+
+    private fun initFun() {
+        funList.clear()
+        funList.add(Classes("高数A1", "王小刚", 23003202))
+        funList.add(Classes("大学物理B", "宋旭", 23003201))
+        funList.add(Classes("计算机组成原理", "李子曼", 23003203))
+        funList.add(Classes("程序设计与问题求解", "黄一峰", 23003205))
+    }
+
+    private fun refreshThings() {
+        thread {
+            Thread.sleep(1000)
+            requireActivity().runOnUiThread {
+                initFun()
+                initRecycler()
+                binding.swipeRefresh.isRefreshing = false
             }
+        }
     }
 }

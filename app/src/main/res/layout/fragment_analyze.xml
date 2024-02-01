@@ -2,26 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="MainThreeFragment.Analyze">
+    android:background="#FAF8F8"
+    tools:context="MainThreeFragment.User">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
-            android:id="@+id/chartView"
-            android:layout_width="match_parent"
-            android:layout_height="600dp"/>
-
-        <Button
-            android:id="@+id/send_excel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/chartView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="发送"/>
-
-    </RelativeLayout>
 
 </FrameLayout>
