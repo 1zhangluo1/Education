@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAF8F8"
     tools:context="MainThreeFragment.User">
 
     <RelativeLayout
@@ -11,18 +12,23 @@
         <LinearLayout
             android:id="@+id/start"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp">
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="功能入口:"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginLeft="15dp"/>
+                android:text="我教的课"
+                android:textSize="20dp"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我听的课"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
 
         </LinearLayout>
 
@@ -30,7 +36,8 @@
             android:id="@+id/fun_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/start"/>
+            android:layout_below="@+id/start"
+            android:layout_marginTop="15dp"/>
 
     </RelativeLayout>
 

@@ -1,21 +1,20 @@
 package MainThreeFragment
 
-import Adapter.FunAdapter
+import Adapter.ClassAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zhangluo.education.R
-import data.Functions
+import data.Classes
 
 
-class EnterFunction : Fragment() {
+class MyClass : Fragment() {
 
-    private val funList = ArrayList<Functions>()
+    private val funList = ArrayList<Classes>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,19 +25,18 @@ class EnterFunction : Fragment() {
         val layoutManager = LinearLayoutManager(activity)
         val recyclerView = view.findViewById<RecyclerView>(R.id.fun_list)
         recyclerView.layoutManager = layoutManager
-        val adapter = FunAdapter(funList)
+        val adapter = ClassAdapter(funList)
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
         return view
     }
 
+
+
     private fun initFun() {
-        funList.add(Functions("教学管理",R.drawable.ic_enter))
-        funList.add(Functions("学生管理",R.drawable.ic_enter))
-        funList.add(Functions("作业和测验管理",R.drawable.ic_enter))
-        funList.add(Functions("课程资源管理",R.drawable.ic_enter))
-        funList.add(Functions("在线评估",R.drawable.ic_enter))
-        funList.add(Functions("班级管理",R.drawable.ic_enter))
+        funList.add(Classes("高数A1","AAA",1))
+        funList.add(Classes("大学物理B","BBB",2))
+        funList.add(Classes("计算机组成原理","CCC",3))
+        funList.add(Classes("程序设计与问题求解","DDD",4))
     }
 
 }
