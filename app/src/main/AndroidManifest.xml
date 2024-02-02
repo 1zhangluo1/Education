@@ -47,9 +47,6 @@
             android:name="Analyzes.PreferenceStudy"
             android:exported="false" />
         <activity
-            android:name="Classes.QuestionAnalyze"
-            android:exported="false" />
-        <activity
             android:name="Analyzes.Bingtu"
             android:exported="false" />
         <activity
